@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import api from './src/services/api';
-import Tasks from './src/components/Tasks/index';
+import Task from './src/components/Task/index';
 
 class App extends Component{
        constructor(props){
@@ -27,7 +27,7 @@ class App extends Component{
              <FlatList
                     data = {this.state.tasks}
                     keyExtractor  = { item => item.id.toString() }
-                    renderItem  = {({item}) => <Tasks data={item}/>}
+                    renderItem  = {({item}) => <Task data={item}/>}
              />
        </View>
      )

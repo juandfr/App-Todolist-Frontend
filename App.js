@@ -1,14 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import api from './src/services/api';
+import Tasks from './src/components/Tasks/index';
+
+class App extends Component{
+       constructor(props){
+         super(props);
+
+         this.state = {
+           tasks: []
+         }
+      }
+
+
+   async componentDidMount(){
+       const response = await api.get('tasks');
+       this.setState({
+            tasks: response.data
+       })
+   }
+
+   render(){
+     return(
+       <View  style={styles.container}>
+             <FlatList
+                    data = {this.state.tasks}
+                    keyExtractor  = { item => item.id.toString() }
+                    renderItem  = {({item}) => <Tasks data={item}/>}
+             />
+       </View>
+     )
+
+   }
+
 }
 
 const styles = StyleSheet.create({

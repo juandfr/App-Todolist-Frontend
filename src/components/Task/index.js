@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Touchable, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 
 class Task extends Component {
   render() {
@@ -10,7 +10,6 @@ class Task extends Component {
           <View style={styles.square}></View>
           <Text style={styles.itemText}>{this.props.data.description}</Text>
         </View>
-        
       </View>
       </TouchableOpacity>
     );
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   itemText: {
-    maxWidth: "80%",
+    maxWidth: "1000%",
   },
   circular: {
     width: 12,

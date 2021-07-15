@@ -5,6 +5,7 @@ import api from './src/services/api';
 import Task from './src/components/Task/index';
 
 class App extends Component{
+  
        constructor(props){
          super(props);
 
@@ -74,11 +75,11 @@ class App extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#E8EAED",
   },
   tasksWrapper: {
-    paddingTop: 80,
+    paddingTop: 50,
     paddingHorizontal: 20,
   },
   sectionTitle: {
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
+    backgroundColor: "#FFF", 
+    borderRadius: 10,
     borderColor: "#C0C0C0",
     borderWidth: 1,
     width: 250,
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     backgroundColor: "#FFF",
-    borderRadius: 60,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#C0C0C0",

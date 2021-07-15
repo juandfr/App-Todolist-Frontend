@@ -1,85 +1,85 @@
-import React, {Component} from 'react';
-import RNRestart from 'react-native-restart';
-import { StyleSheet, Text, View, FlatList, ScrollView, KeyboardAvoidingView, TextInput , TouchableOpacity, Button} from 'react-native';
+import React, { Component } from "react";
+import RNRestart from "react-native-restart";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  KeyboardAvoidingView,
+  TextInput,
+  TouchableOpacity,
+  Button,
+} from "react-native";
 
-import api from './src/services/api';
-import Task from './src/components/Task/index';
+import api from "./src/services/api";
+import Task from "./src/components/Task/index";
 
-class App extends Component{
-  
-       constructor(props){
-         super(props);
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-         this.state = {
-           tasks: []
-         }
-      }
+    this.state = {
+      tasks: [],
+    };
+  }
 
-     async componentDidMount(){
-       const response = await api.get('tasks');
-       this.setState({
-            tasks: response.data
-       })
-   }
+  async componentDidMount() {
+    const response = await api.get("tasks");
+    this.setState({
+      tasks: response.data,
+    });
+  }
 
-   async createTask(username){
-    api.post('tasks/', {
+  async createTask(username) {
+    api.post("tasks/", {
       description: username,
-      user_id: 1
-    })
-    const response = await api.get('tasks');
-       this.setState({
-            tasks: response.data
-       })
-    
-  } 
+      user_id: 1,
+    });
+    const response = await api.get("tasks");
+    this.setState({
+      tasks: response.data,
+    });
+  }
 
-   render(){
-     return(
+  render() {
+    return (
       <View style={styles.container}>
-      
         <View style={styles.tasksWrapper}>
           <Text style={styles.sectionTitle}>Lista de Tarefas 📝</Text>
-          <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-        }}
-        keyboardShouldPersistTaps="handled"
-      >
+
           <View style={styles.items}>
-          
-          <FlatList
-                    data = {this.state.tasks}
-                    keyExtractor  = { item => item.id.toString() }
-                    renderItem  = {({item}) => <Task data={item}/>}
-             />
-            
+            <FlatList
+              data={this.state.tasks}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => <Task data={item} />}
+            />
           </View>
-          </ScrollView>
         </View>
-     
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.writeTaskWrapper}
-      >
-        <TextInput
-          style={styles.input}
-          placeholder={"Escreva sua tarefa"}
-          onChangeText={(value) => this.setState({username: value})}
-
-        />
-        <TouchableOpacity >
-          <View style={styles.addWrapper} >
-          <Text style={styles.addText} onPress={() =>this.createTask(this.state.username)}>➕</Text>
-          </View>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
-     )
-
-   }
-
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.writeTaskWrapper}
+        >
+          <TextInput
+            style={styles.input}
+            placeholder={"Escreva sua tarefa"}
+            onChangeText={(value) => this.setState({ username: value })}
+          />
+          <TouchableOpacity>
+            <View style={styles.addWrapper}>
+              <Text
+                style={styles.addText}
+                onPress={() => this.createTask(this.state.username)}
+              >
+                ➕
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   tasksWrapper: {
     paddingTop: 50,
     paddingHorizontal: 20,
-    marginBottom: 120
+    marginBottom: 120,
   },
   sectionTitle: {
     fontSize: 24,
@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
   },
   items: {
     marginTop: 20,
+    marginBottom: 30
   },
   writeTaskWrapper: {
     position: "absolute",
-    bottom: 20,
+    bottom: 30,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 10,
     paddingHorizontal: 15,
-    backgroundColor: "#FFF", 
+    backgroundColor: "#FFF",
     borderRadius: 10,
     borderColor: "#C0C0C0",
     borderWidth: 1,
@@ -126,9 +127,7 @@ const styles = StyleSheet.create({
     borderColor: "#C0C0C0",
     borderWidth: 1,
   },
-  addText: {
-  },
+  addText: {},
 });
-
 
 export default App;

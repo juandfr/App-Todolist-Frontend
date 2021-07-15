@@ -12,6 +12,7 @@ class App extends Component{
          this.state = {
            tasks: []
          }
+         
       }
 
      async componentDidMount(){
@@ -31,14 +32,15 @@ class App extends Component{
    render(){
      return(
       <View style={styles.container}>
-      <ScrollView
+      
+        <View style={styles.tasksWrapper}>
+          <Text style={styles.sectionTitle}>Lista de Tarefas 📝</Text>
+          <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
         }}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Lista de Tarefas 📝</Text>
           <View style={styles.items}>
           
           <FlatList
@@ -48,8 +50,9 @@ class App extends Component{
              />
             
           </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+     
 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -82,34 +85,35 @@ const styles = StyleSheet.create({
   tasksWrapper: {
     paddingTop: 50,
     paddingHorizontal: 20,
+    marginBottom: 120
   },
   sectionTitle: {
     fontSize: 24,
     fontWeight: "bold",
   },
   items: {
-    marginTop: 30,
+    marginTop: 20,
   },
   writeTaskWrapper: {
     position: "absolute",
-    bottom: 60,
+    bottom: 20,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
   },
   input: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: "#FFF", 
     borderRadius: 10,
     borderColor: "#C0C0C0",
     borderWidth: 1,
-    width: 250,
+    width: 280,
   },
   addWrapper: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     backgroundColor: "#FFF",
     borderRadius: 10,
     justifyContent: "center",

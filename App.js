@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   items: {
-    marginTop: 20,
-    marginBottom: 30
+    marginTop: 15,
+    marginBottom: 35
   },
   writeTaskWrapper: {
     position: "absolute",

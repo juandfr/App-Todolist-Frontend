@@ -21,12 +21,12 @@ class App extends Component{
        })
    }
 
-   async createTask(){
-    const response = await api.get('tasks');
-    this.setState({
-         tasks: response.data
+   createTask(username){
+    api.post('tasks/', {
+      description: username,
+      user_id: 1
     })
-}
+  } 
 
    render(){
      return(
@@ -58,11 +58,11 @@ class App extends Component{
         <TextInput
           style={styles.input}
           placeholder={"Escreva sua tarefa"}
-          onChangeText={(text) => setTask(text)}
+          onChangeText={(value) => this.setState({username: value})}
         />
         <TouchableOpacity >
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>➕</Text>
+            <Text style={styles.addText} onPress={this.createTask(this.state.username)}>➕</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>

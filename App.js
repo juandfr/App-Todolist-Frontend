@@ -37,15 +37,15 @@ class App extends Component{
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Lista de Tarefas 📅</Text>
+          <Text style={styles.sectionTitle}>Lista de Tarefas 📝</Text>
           <View style={styles.items}>
-          <TouchableOpacity>
+          
           <FlatList
                     data = {this.state.tasks}
                     keyExtractor  = { item => item.id.toString() }
                     renderItem  = {({item}) => <Task data={item}/>}
              />
-            </TouchableOpacity>
+            
           </View>
         </View>
       </ScrollView>
@@ -61,7 +61,7 @@ class App extends Component{
         />
         <TouchableOpacity >
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+            <Text style={styles.addText}>➕</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>

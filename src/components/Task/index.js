@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet, Touchable, TouchableOpacity} from "react-native";
 
 class Task extends Component {
   render() {
     return (
+      <TouchableOpacity>
       <View style={styles.item}>
         <View style={styles.itemLeft}>
           <View style={styles.square}></View>
           <Text style={styles.itemText}>{this.props.data.description}</Text>
         </View>
-        <View style={styles.circular}></View>
+        
       </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -31,10 +33,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   square: {
-    width: 24,
-    height: 24,
-    backgroundColor: "#55BCF6",
-    opacity: 0.4,
+    width: 10,
+    height: 10,
+    backgroundColor: "#000000",
     borderRadius: 5,
     marginRight: 15,
   },
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   circular: {
     width: 12,
     height: 12,
-    borderColor: "#55BCF6",
+    borderColor: "#000000",
     borderWidth: 2,
     borderRadius: 5,
   },

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import RNRestart from 'react-native-restart';
 import { StyleSheet, Text, View, FlatList, ScrollView, KeyboardAvoidingView, TextInput , TouchableOpacity, Button} from 'react-native';
 
 import api from './src/services/api';
@@ -12,7 +13,6 @@ class App extends Component{
          this.state = {
            tasks: []
          }
-         
       }
 
      async componentDidMount(){
@@ -27,6 +27,11 @@ class App extends Component{
       description: username,
       user_id: 1
     })
+    const response = await api.get('tasks');
+       this.setState({
+            tasks: response.data
+       })
+    
   } 
 
    render(){

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, KeyboardAvoidingView, TextInput , TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView, KeyboardAvoidingView, TextInput , TouchableOpacity, Button} from 'react-native';
 
 import api from './src/services/api';
 import Task from './src/components/Task/index';
@@ -21,7 +21,7 @@ class App extends Component{
        })
    }
 
-   createTask(username){
+   async createTask(username){
     api.post('tasks/', {
       description: username,
       user_id: 1
@@ -59,10 +59,11 @@ class App extends Component{
           style={styles.input}
           placeholder={"Escreva sua tarefa"}
           onChangeText={(value) => this.setState({username: value})}
+
         />
         <TouchableOpacity >
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText} onPress={this.createTask(this.state.username)}>➕</Text>
+          <View style={styles.addWrapper} >
+          <Text style={styles.addText} onPress={() =>this.createTask(this.state.username)}>➕</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -116,7 +117,8 @@ const styles = StyleSheet.create({
     borderColor: "#C0C0C0",
     borderWidth: 1,
   },
-  addText: {},
+  addText: {
+  },
 });
 
 

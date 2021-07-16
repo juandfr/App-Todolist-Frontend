@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 class Task extends Component {
   render() {
     return (
       <TouchableOpacity>
-      <View style={styles.item}>
-        <View style={styles.itemLeft}>
-          <View style={styles.square}></View>
-          <Text style={styles.itemText}>{this.props.data.description}</Text>
+        <View style={styles.item}>
+          <View style={styles.itemLeft}>
+            <View style={styles.square}></View>
+            <Text style={styles.itemText}>{this.props.data.description}</Text>
+          </View>
         </View>
-      </View>
       </TouchableOpacity>
     );
   }

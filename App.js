@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import RNRestart from "react-native-restart";
 import {
   StyleSheet,
   Text,
   View,
   FlatList,
-  ScrollView,
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
-  Button,
 } from "react-native";
 
 import api from "./src/services/api";

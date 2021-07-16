@@ -43,8 +43,9 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Lista de Tarefas 📝</Text>
-
+          <TouchableOpacity>
+          <Text style={styles.sectionTitle} onPress={() => this.componentDidMount()}>Lista de Tarefas 📝</Text>
+          </TouchableOpacity>
           <View style={styles.items}>
             <FlatList
               data={this.state.tasks}
@@ -63,11 +64,10 @@ class App extends Component {
             placeholder={"Escreva sua tarefa"}
             onChangeText={(value) => this.setState({ task: value })}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.createTask(this.state.task)}>
             <View style={styles.addWrapper}>
               <Text
                 style={styles.addText}
-                onPress={() => this.createTask(this.state.task)}
               >
                 ➕
               </Text>

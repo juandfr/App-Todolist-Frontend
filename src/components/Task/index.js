@@ -1,17 +1,23 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-
+import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
+import api from "../../services/api";
 class Task extends Component {
+
+  async deleteTask(id) {
+    await api.delete("tasks/" + id + "/");
+  }
+
   render() {
     return (
-      <TouchableOpacity>
-        <View style={styles.item}>
-          <View style={styles.itemLeft}>
-            <View style={styles.square}></View>
-            <Text style={styles.itemText}>{this.props.data.description}</Text>
-          </View>
+      <View style={styles.item}>
+        <View style={styles.itemLeft}>
+          <View style={styles.square}></View>
+          <Text style={styles.itemText}>{this.props.data.description}</Text>
         </View>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.deleteTask(this.props.data.id)}>
+        <View style={styles.circular}></View>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -42,8 +48,8 @@ const styles = StyleSheet.create({
     maxWidth: "1000%",
   },
   circular: {
-    width: 12,
-    height: 12,
+    width: 20,
+    height: 20,
     borderColor: "#000000",
     borderWidth: 2,
     borderRadius: 5,
